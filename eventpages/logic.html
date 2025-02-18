@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="eventstyles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ISTE PCCOE Presents</h1>
+    <h2>Logic Building Workshop</h2>
+    <div class="date-time">12th Feb</div>
+    <div class="date-time">2:00 PM - 4:00 PM</div>
+    <div class="button-container">
+      <a href="#" class="button primary">Register</a>
+      <a href="#" class="button secondary">Rules and Regulations</a>
+    </div>
+
+    <section>
+    <img src="../images_extra/logic.jpeg" alt="" style="height: 80vh; width: auto; margin: 10vh;">
+</section>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <img src="../images_extra/speaker.png" alt="" style="object-fit: fill; height: 100%; width: 100%; border-radius: 100%;">
+        </div>
+        <div class="feature-title">Be a winner</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <img src="../images_extra/free.png" alt="Free participation icon" style="object-fit: fill; height: 100%; width: 100%; border-radius: 100%;">
+        </div>
+        <div class="feature-title">Free Participation</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <img src="../images_extra/goodies.png" alt="Goodies icon" style="object-fit: fill; height: 100%; width: 100%; border-radius: 100%;">
+        </div>
+        <div class="feature-title">Win exciting goodies</div>
+      </div>
+    </div>
+
+    <h2 class="faq-title">Logic Building Workshop FAQs</h2>
+      <div class="faq-item">
+        <div class="faq-question">What is the Logic Building Workshop?</div>
+        <div class="faq-answer">The Logic Building Workshop helps participants enhance their problem-solving skills through structured exercises and challenges.</div>
+      </div>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

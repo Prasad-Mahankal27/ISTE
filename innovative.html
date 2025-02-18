@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <style>
+  html, body {
+  background: black;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.spacer {
+  height: 60vh;
+  opacity: 0.2;
+}
+
+.cards {
+  position: relative;
+  width: 45vh;
+  height: 60vh;
+  margin: 0 auto;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4%;
+}
+
+.photo {
+  width: 50%;
+  height: 50%;
+}
+
+.photo > img {
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+.content .text .heading {
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+.content .text .textBx {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.content p {
+  color: white;
+  position: relative;
+  word-wrap: break-word;
+  width: 100%;
+  max-width: 80%;
+  margin: auto;
+  text-align: center;
+  text-shadow: 2px 2px 4px black;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10% 0%;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00c6ff, 0 0 30px #ff00ff, 0 0 25px #00c6ff;
+  transform-origin: center center;
+}
+
+.card:nth-child(odd) {
+  background: linear-gradient(rgb(255, 247, 0), rgb(255, 153, 0)) padding-box,
+    linear-gradient(135deg, #00c6ff, #ff00ff) border-box;
+  box-shadow: 0 0 15px #00c6ff, 0 0 30px #ff00ff, 0 0 15px #00c6ff;
+  border-radius: 10px;
+}
+
+.container {
+  background-color: rgb(0, 0, 0);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cards">
+
+        <div class="card">
+          <div class="content">
+          <div class="photo">
+              <img src="image2.jpeg" alt="">
+          </div>
+          <div class="text">
+            <div class="heading">
+                <div>Prasad Mahankal</div>
+              <div>Software Engineer</div>
+            </div>
+              <div class="textBx">
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          </div>
+          <p>"The students of ISTE are really hardworking. Special thanks to Prasad Mahankal for making this wonderful website."</p>        
+      </div>
+        </div>
+
+        <div class="card"></div>
+
+        <div class="card">
+          <div class="content">
+          <div class="photo">
+              <img src="image2.jpeg" alt="">
+          </div>
+          <div class="text">
+            <div class="heading">
+                <div>Santosh Sambare</div>
+              <div>Software Engineer</div>
+            </div>
+              <div class="textBx">
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          </div>
+          <p>"The students of ISTE are really hardworking. Special thanks to Prasad Mahankal for making this wonderful website."</p>        
+      </div>
+        </div>
+
+          <div class="card"></div>
+
+        <div class="card">
+            <div class="content">
+            <div class="photo">
+                <img src="image2.jpeg" alt="">
+            </div>
+            <div class="text">
+              <div class="heading">
+                  <div>Prasad Mahankal</div>
+                <div>Software Engineer</div>
+              </div>
+                <div class="textBx">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            </div>
+            <p>"The students of ISTE are really hardworking. Special thanks to Prasad Mahankal for making this wonderful website."</p>        
+        </div>
+          </div>
+
+          <div class="card"></div>
+
+          <div class="card">
+              <div class="content">
+              <div class="photo">
+                  <img src="image2.jpeg" alt="">
+              </div>
+              <div class="text">
+                <div class="heading">
+                    <div>Prasad Mahankal</div>
+                  <div>Software Engineer</div>
+                </div>
+                  <div class="textBx">
+                      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                      <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+              </div>
+              <p>"The students of ISTE are really hardworking. Special thanks to Prasad Mahankal for making this wonderful website."</p>        
+          </div>
+            </div>  
+
+      </div>
+      </div>
+      <div class="spacer"></div>
+      <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+gsap.fromTo(
+  ".card:not(:first-child)",
+  {
+    x: (index) => (index % 2 === 0 ? window.innerWidth / 2 + 500 : -window.innerWidth / 2 - 500),
+    rotate: -90,
+  },
+  {
+    x: 0,
+    stagger: 0.5,
+    rotate: 0,
+    scrollTrigger: {
+      pin: ".container",
+      markers: true,
+      scrub: true,
+      start: "top top",
+      end: "+=3000",
+      invalidateOnRefresh: true
+    }
+  }
+);
+      </script>
+</body>
+</html>

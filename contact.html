@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ISTE PCCoE</title>
+<link rel="stylesheet" href="style_about.css" />
+<style>
+  /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #000000;
+}
+
+/* About Section Styles */
+.about-container {
+    background-color: #000000;
+    color: white;
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow-x: hidden;
+}
+
+.about-tag {
+    color: #4861FC;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.about-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.about-description {
+    color: #B0B0B0;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    max-width: 800px;
+}
+
+/* Stats Grid Styles */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    background: #4861FC;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.stat-info .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+}
+
+.stat-info .label {
+    color: #4861FC;
+    margin-top: 0.5rem;
+}
+
+/* Button and Innovation Box Styles */
+.read-more-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #4861FC, #7B8FFF);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover {
+    transform: translateY(-2px);
+}
+
+.innovation-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bulb-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #4861FC, #7B8FFF);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.innovation-text {
+    color: #B0B0B0;
+    font-size: 1.1rem;
+}
+
+/* Features Section Styles */
+.mid-container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    padding: 5vh;
+    margin: 8vh auto;
+}
+
+.card {
+    background-color: black;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    border: 2px solid white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Card Icon Colors */
+.education .icon { background-color: #1e3a8a; color: #60a5fa; }
+.innovation .icon { background-color: #065f46; color: #34d399; }
+.community .icon { background-color: #9a3412; color: #fb923c; }
+.career .icon { background-color: #581c87; color: #c084fc; }
+.research .icon { background-color: #4a044e; color: #f472b6; }
+.mentorship .icon { background-color: #12306c; color: #34d399; }
+
+.title {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
+/* Contact Section Styles */
+.contact-container {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    margin: auto;
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.contact-form {
+    background-color: black;
+    flex: 1;
+    padding: 20px;
+    min-width: 300px;
+}
+
+.text-section h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.text-section p {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.text-section strong {
+    color: #ff1d50;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ff1d50;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background: #ff1d50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-group button:hover {
+    background: #2196f3;
+}
+
+/* Map Section Styles */
+.map-section {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 300px;
+}
+
+.map-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: red;
+    text-align: center;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 60vh;
+    border-radius: 10px;
+    border: none;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1a202c;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.developed-text {
+    color: #60A5FA;
+    margin-bottom: 20px;
+}
+
+.heart-icon {
+    color: red;
+    display: inline;
+}
+
+.footer-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.nav-links a {
+    display: block;
+    color: #CBD5E0;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #60A5FA;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: #CBD5E0;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #60A5FA;
+}
+
+.contact-link {
+    color: #60A5FA;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #2D3748;
+    color: #CBD5E0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .about-container,
+    .footer-container,
+    .mid-container {
+        width: 95%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .mid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 3vh 1.5rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .contact-wrapper {
+        flex-direction: column;
+    }
+
+    .map-section iframe {
+        height: 45vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .about-title {
+        font-size: 1.75rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mid-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .read-more-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .innovation-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.75rem;
+    }
+
+    .footer-heading {
+        font-size: 1.25rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .map-section iframe {
+        height: 45vh;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="sticky">
+    <div id="main">
+        <div class="contact-wrapper">
+            <!-- Left Side: Contact Form -->
+            <div class="contact-form">
+                <div class="text-section">
+                    <h1>Contact Us!</h1>
+                    <p>We’d love to hear from you! Reach out for any questions about our events, workshops, membership, or collaborations—we’re here to help!</p>
+                    <p><strong>Email:</strong> iste@pccoepune.org</p>
+                    <p><strong>Location:</strong> Pimpri Chinchwad College of Engineering, Pune.</p>
+                </div>
+
+                <div class="form-section">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side: Google Map -->
+            <div class="map-section">
+                <h2>Find Us Here</h2>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.435929542252!2d73.84667497506455!3d18.64894528248459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b957d6e8a9cf%3A0x4380371b814e6ebd!2sPimpri%20Chinchwad%20College%20Of%20Engineering!5e0!3m2!1sen!2sin!4v1707292206803!5m2!1sen!2sin" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+        </div>
+</section>
+
+<section class="website-content">
+    <div class="section-header">
+        <div class="about-container">
+            <div class="about-tag">About ISTE</div>
+            
+            <h1 class="about-title">We Are Here to Bring Change</h1>
+            
+            <p class="about-description">
+                Indian Society for Technical Education (ISTE) is the leading National Professional 
+                non-profit making Society for Technical Education in the field of engineering and 
+                technology, registered under the Societies Registration Act of 1860. Established 
+                in 1941, ISTE aims at the career development of engineering teachers and 
+                personality development of students, contributing to the overall development of 
+                the technical education system in India.
+            </p>
+    
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">🎓</div>
+                    <div class="stat-info">
+                        <div class="number">100+</div>
+                        <div class="label">Colleges Covered</div>
+                    </div>
+                </div>
+    
+                <div class="stat-item">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-info">
+                        <div class="number">50+</div>
+                        <div class="label">Years of Experience</div>
+                    </div>
+                </div>
+    
+                <div class="stat-item">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <div class="number">138</div>
+                        <div class="label">Members</div>
+                    </div>
+                </div>
+    
+                <div class="stat-item">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <div class="number">25000+</div>
+                        <div class="label">Total Members</div>
+                    </div>
+                </div>
+            </div>
+    
+            <a href="#" class="read-more-btn">Read More</a>
+    
+            <div class="innovation-box">
+                <div class="bulb-icon">💡</div>
+                <div class="innovation-text">Innovative Ideas for Future Generations</div>
+            </div>
+        </div>
+
+
+
+        <div class="mid-container">
+            <div class="card education">
+              <div class="icon">🎓</div>
+              <h2 class="title">Educational Excellence</h2>
+              <p class="description">Promoting technical education and fostering a learning environment.</p>
+            </div>
+            
+            <div class="card innovation">
+              <div class="icon">💻</div>
+              <h2 class="title">Technical Innovation</h2>
+              <p class="description">Encouraging innovative solutions and technical development.</p>
+            </div>
+            
+            <div class="card community">
+              <div class="icon">👥</div>
+              <h2 class="title">Community Building</h2>
+              <p class="description">Creating a strong network of tech enthusiasts and professionals.</p>
+            </div>
+            
+            <div class="card career">
+              <div class="icon">🚀</div>
+              <h2 class="title">Career Growth</h2>
+              <p class="description">Supporting students in achieving their career aspirations.</p>
+            </div>
+
+            <div class="card research">
+                <div class="icon">🔬</div>
+                <h2 class="title">Research & Development</h2>
+                <p class="description">Advancing knowledge through research and technological exploration.</p>
+              </div>
+              
+              <div class="card mentorship">
+                <div class="icon">🤝</div>
+                <h2 class="title">Mentorship & Guidance</h2>
+                <p class="description">Connecting students with experts for valuable insights and career advice.</p>
+              </div>
+              
+          </div>
+
+
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <div class="developed-text">
+                        Developed with <span class="heart-icon">❤️</span> by Prasad Ajay Mahankal
+                    </div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <div class="contact-info1">
+                        <p>Pimpri Chinchwad College of Engineering</p>
+                        <p>Near Akurdi Railway Station Rd, Sector No. 26, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044</p>
+                        <a href="mailto:iste@pccoepune.org" class="contact-link">iste@pccoepune.org</a>
+                    </div>
+                </div>
+        
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Explore</h3>
+                    <nav class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Gallery</a>
+                        <a href="#">ISTE - Home</a>
+                    </nav>
+                </div>
+        
+                <!-- Connect With Us Section -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© 2025 PCCOE ISTE Student Chapter. All rights reserved.</p>
+            </div>
+
+            
+        </footer>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="script_about.js"></script>
+</body>
+</html>

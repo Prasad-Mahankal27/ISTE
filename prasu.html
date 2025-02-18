@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PCCOE ISTE Chapter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: black;
+    color: white;
+    padding: 20px;
+}
+
+.contact-container {
+    background-color: black;
+    padding: 50px 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Layout: Side-by-side */
+.contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left Side: Contact Form */
+.contact-form {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+}
+
+.text-section h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.text-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.text-section strong {
+    color: #ff1d50;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ff1d50;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background: #ff1d50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-group button:hover {
+    background: #2196f3;
+}
+
+/* Right Side: Google Map */
+.map-section {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    text-align: center;
+}
+
+.map-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-container {
+        width: 95%;
+        padding: 30px 15px;
+    }
+    
+    .text-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .text-section p {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+
+    .form-group button {
+        padding: 10px;
+    }
+
+    .map-section iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .text-section h1 {
+        font-size: 1.6rem;
+    }
+
+    .text-section p {
+        font-size: 0.9rem;
+    }
+
+    .map-section iframe {
+        height: 250px;
+    }
+
+    .form-group button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 20px;
+    }
+
+    .text-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .text-section p {
+        font-size: 0.85rem;
+    }
+
+    .map-section iframe {
+        height: 200px;
+    }
+
+    .form-group button {
+        font-size: 0.9rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <section class="contact-container">
+        <div class="contact-wrapper">
+            <!-- Left Side: Contact Form -->
+            <div class="contact-form">
+                <div class="text-section">
+                    <h1>Contact Us!</h1>
+                    <p>We’d love to hear from you! Reach out for any questions about our events, workshops, membership, or collaborations—we’re here to help!</p>
+                    <p><strong>Email:</strong> iste@pccoepune.org</p>
+                    <p><strong>Location:</strong> Pimpri Chinchwad College of Engineering, Pune.</p>
+                </div>
+
+                <div class="form-section">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side: Google Map -->
+            <div class="map-section">
+                <h2>Find Us Here</h2>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.435929542252!2d73.84667497506455!3d18.64894528248459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b957d6e8a9cf%3A0x4380371b814e6ebd!2sPimpri%20Chinchwad%20College%20Of%20Engineering!5e0!3m2!1sen!2sin!4v1707292206803!5m2!1sen!2sin" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

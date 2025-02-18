@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTE PCCoE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        html, body {
+            background: black;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            transform: translateY(-5vh);
+        }
+        @media (max-width: 728px) {
+            .container {
+                transform: translateY(5%);
+            }
+        }
+
+        .card {
+            width: 280px;
+            min-height: 380px;
+            /*background: linear-gradient(rgb(255, 247, 0), rgb(255, 153, 0)); */
+            background: linear-gradient(rgb(51, 146, 254),rgba(0, 86, 184, 0.326), rgb(0, 0, 0));
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* box-shadow: 0 0 15px #00c6ff, 0 0 30px #ff00ff; */
+            border: 2px solid white;
+            box-shadow: 0 0 15px #00c6ff, 0 0 30px #006aff;
+            padding: 25px;
+            transition: transform 0.3s ease;
+            margin: 20px;
+
+            /* Animation */
+    transform: scale(0.8);
+    opacity: 0;
+    animation: zoomIn 0.6s ease-out forwards;
+        }
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+        .photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .heading {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .designation {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .textBx {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .textBx a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .textBx a:hover {
+            transform: scale(1.2);
+        }
+
+        p {
+            color: white;
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                gap: 20px;
+            }
+            
+            .card {
+                width: 260px;
+                min-height: 360px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                width: calc(50% - 40px);
+                min-width: 240px;
+            }
+
+            .photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .heading {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                gap: 15px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 320px;
+                min-height: 340px;
+            }
+
+            .textBx {
+                gap: 12px;
+            }
+
+            .textBx a {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="photo">
+                <img src="atulpawarsir.png" alt="Atul Pawar">
+            </div>
+            <div class="heading">Atul Pawar</div>
+            <div class="designation">Asst. Prof.</div>
+            <div class="textBx">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>"In today's rapidly evolving technical landscape, it's crucial to have student chapters like ours that provide a platform for hands-on learning, networking, and professional development. I'm excited to see our students grow and make meaningful contributions to the field."</p>
+        </div>
+
+        <div class="card">
+            <div class="photo">
+                <img src="sambaresir.png" alt="Santosh Sambare">
+            </div>
+            <div class="heading">Santosh Sambare</div>
+            <div class="designation">Asst. Prof.</div>
+            <div class="textBx">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>"Being part of this Technical student chapter is not just about gaining knowledge; it's about fostering a community of like-minded individuals who are eager to learn, innovate, and collaborate. I'm proud to support this group of talented students."</p>
+        </div>
+
+        <div class="card">
+            <div class="photo">
+                <img src="rahulsir.png" alt="Rahul Sir">
+            </div>
+            <div class="heading">Rahul Patil</div>
+            <div class="designation">Academic Co-ordinator</div>
+            <div class="textBx">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>"I'm continually impressed by the dedication and passion of our student chapter members. Their commitment to pushing the boundaries of technology and their drive to make a positive impact in their field is truly commendable."</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  height: 600vh;
+  width: 100vw;
+  font-family: "Orbitron", sans-serif;
+  background-color: #1d1e22;
+  color: white;
+}
+
+/* Circular Wheel Section */
+.slider-section {
+  height: 22vh;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+/* The Rotating Wheel */
+.wheel {
+  position: absolute;
+  top: -28vh; /* Moves the wheel slightly up */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300vw;
+  height: 300vw;
+  max-width: 2000px;
+  max-height: 2000px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Glowing Circular Cards */
+.wheel__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 19%;
+  max-width: 100vh;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #0062ff;
+  box-shadow: 0 0 15px #0062ff, 0 0 30px #0062ff, 0 0 45px #0062ff;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Scale Up on Hover */
+.wheel__card:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #0062ff, 0 0 40px #0062ff, 0 0 60px #0062ff;
+}
+
+/* Clicked Card Moves to Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Scroll Down Indicator */
+.scroll-down {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: white;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 14px;
+  overflow: visible;
+}
+
+.scroll-down .arrow {
+  position: relative;
+  top: 0px;
+  margin: 0 auto;
+  width: 15px;
+  height: 15px;
+  filter: invert(1);
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
+  background-size: contain;
+}

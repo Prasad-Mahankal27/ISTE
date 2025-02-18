@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinny Flipz</title>
+  <link rel="stylesheet" href="cells.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="header"></div>
+
+  <!-- Circular Card Slider -->
+  <section class="slider-section">
+    <div class="wheel">
+      <!-- Glowing Cards -->
+      <div class="wheel__card">Coding Cell</div>
+      <div class="wheel__card">Web Cell</div>
+      <div class="wheel__card">Event Management Cell</div>
+      <div class="wheel__card">Design & Content Cell</div>
+      <div class="wheel__card">Marketing Cell</div>
+      <div class="wheel__card">Social Media Cell</div>
+      <div class="wheel__card">Sponsorship Cell</div>
+    </div>
+  </section>
+
+  <!-- Scroll Down Indicator -->
+  <div class="scroll-down">Scroll down<div class="arrow"></div></div>
+
+  <!-- GSAP Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger, Flip);
+
+    let wheel = document.querySelector(".wheel"),
+        cards = gsap.utils.toArray(".wheel__card"),
+        header = document.querySelector(".header"),
+        currentCard;
+
+    // Move the wheel slightly upward
+    function setup() {
+        let radius = wheel.offsetWidth / 2,
+            center = radius,
+            slice = 360 / cards.length,
+            DEG2RAD = Math.PI / 180;
+        
+        gsap.set(cards, {
+            x: i => center + radius * Math.sin(i * slice * DEG2RAD),
+            y: i => center - radius * Math.cos(i * slice * DEG2RAD) - 50, // Moving slightly up
+            rotation: i => i * slice,
+            xPercent: -50,
+            yPercent: -50
+        });
+    }
+
+    setup();
+    window.addEventListener("resize", setup);
+
+    // Wheel Rotation on Scroll
+    gsap.to(wheel, {
+        rotation: -360,
+        ease: "none",
+        duration: cards.length,
+        scrollTrigger: {
+            start: 0,
+            end: "max",
+            scrub: 1
+        }
+    });
+
+    // Clickable Card Animation
+    cards.forEach(card => card.addEventListener("click", onClickCard));
+    header.addEventListener("click", closeCurrentCard);
+
+    function closeCurrentCard() {
+        if (currentCard) {
+            let state = Flip.getState(currentCard);
+            wheel.appendChild(currentCard);
+            Flip.from(state, { ease: "power1.inOut", scale: true });
+            currentCard = null;
+        }
+    }
+
+    function onClickCard(e) {
+        let card = e.target;
+        if (card !== currentCard) {
+            closeCurrentCard();
+            currentCard = card;
+            let state = Flip.getState(card);
+            header.appendChild(card);
+            Flip.from(state, { duration: 0.6, scale: true, ease: "power1.inOut" });
+        } else {
+            closeCurrentCard();
+        }
+    }
+
+    document.querySelectorAll(".wheel__card").forEach(card => {
+    card.addEventListener("click", function () {
+        window.location.href = "team.html";
+    });
+});
+
+  </script>
+
+</body>
+</html>

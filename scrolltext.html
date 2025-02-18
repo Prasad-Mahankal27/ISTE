@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISTE PCCoE</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "F37 Fudge";
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 4vw;
+    font-weight: 500;
+    color: #1f1f1f;
+}
+.hero,
+.outro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #edebde; */
+    background-color: #000;
+}
+.hero h1, .outro h1{
+color: white;
+}
+.sticky-mid{
+background-color: #fffef8;
+}
+.titles{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 400vw;
+    height: 100vh;
+    display: flex;
+    will-change: transform;
+}
+.title{
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 9vw;
+    font-style: italic;
+    will-change: transform;
+}
+h1.title-1 {
+    font-style: italic;
+    color: #079225; /* Red */
+    text-shadow: 2px 2px 0 rgba(177, 216, 70, 0.2);
+}
+
+h1.title-2 {
+    font-style: italic;
+    color: #348751; /* Cyan */
+    text-shadow: 2px 2px 0 rgba(72, 208, 51, 0.2);
+}
+
+h1.title-3 {
+    font-style: italic;
+    color: #000000; /* Black base text */
+    text-shadow: 2px 2px 0 rgba(64, 241, 79, 0.2);
+}
+.images{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 250vw;
+    height: 250vh;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    z-index: -1;
+}
+.card{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 2em;
+    transform-style: preserve-3d;
+    will-change: transform;
+    overflow: hidden;
+}
+
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>(Scroll if you dare)</h1>
+    </section>
+    <section class="sticky-mid">
+        <div class="titles">
+            <div class="title">
+                <h1 class="title-1">Welcome</h1>
+                <h1 class="title-2">Welcome</h1>
+                <h1 class="title-3">Welcome</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">To</h1>
+                <h1 class="title-2">To</h1>
+                <h1 class="title-3">To</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">ISTE</h1>
+                <h1 class="title-2">ISTE</h1>
+                <h1 class="title-3">ISTE</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">PCCoE</h1>
+                <h1 class="title-2">PCCoE</h1>
+                <h1 class="title-3">PCCoE</h1>
+            </div>
+        </div>
+        <div class="images"></div>
+    </section>
+    <section class="outro">
+        <h1>Thats a wrap</h1>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const lenis = new Lenis();
+
+   lenis.on("scroll", ScrollTrigger.update);
+
+   gsap.ticker.add(time => {
+       lenis.raf(time * 1000);
+   });
+
+   gsap.ticker.lagSmoothing(0);
+
+   const cardPositions = [
+   { top: "30%", left: "55%" },
+   { top: "20%", left: "25%" },
+   { top: "50%", left: "10%" },
+   { top: "40%", left: "40%" },
+   { top: "30%", left: "30%" },
+   { top: "40%", left: "45%" },
+   { top: "20%", left: "50%" },
+   { top: "60%", left: "10%" },
+   { top: "20%", left: "40%" },
+   { top: "20%", left: "55%" }
+];
+const titlesContainer = document.querySelector(".titles");
+const moveDistance = window.innerWidth*3;
+
+const imagesContainer = document.querySelector(".images");
+
+for (let i = 1; i <= 10; i++) {
+   const card = document.createElement("div");
+   card.className = `card card-${i}`;
+   
+   const img = document.createElement("img");
+   img.src = `./posters/img${i}.jpeg`;
+   img.alt = `Image ${i}`;
+   card.appendChild(img);
+
+   const position = cardPositions[i-1]
+   card.style.top = position.top;
+   card.style.left = position.left;
+   imagesContainer.appendChild(card);
+}
+
+const cards = document.querySelectorAll(".card");
+cards.forEach((card,index)=>{
+gsap.set(card, {
+    z: -50000,
+    scale: 0,
+});
+});
+
+ScrollTrigger.create({
+    trigger: ".sticky-mid",
+    start: "top top",
+    end: `+=${window.innerHeight*5}px`,
+    pin:true,
+    scrub:1,
+    onUpdate: (self) =>{
+        const xPosition = -moveDistance*self.progress;
+        gsap.set(titlesContainer,{
+            x:xPosition,
+        });
+        const velocity = self.velocity;
+        const normalizedVelocity = velocity/Math.abs(velocity) || 0;
+        const maxOffset = 30;
+        const currentSpeed = Math.min(Math.abs(velocity/500), maxOffset);
+        const isAtEdge = self.progress <= 0 || self.progress >=1;
+
+        document.querySelectorAll(".title").forEach((titlesContainer, index) => {
+            const title1 = titlesContainer.querySelector(".title-1");
+            const title2 = titlesContainer.querySelector(".title-2");
+            const title3 = titlesContainer.querySelector(".title-3");
+
+            if(isAtEdge){
+                gsap.to([title1,title2], {
+                    xPercent: -50,
+                    x: 0,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    overwrite: true,
+                });
+            }else{
+                const baseOffset = normalizedVelocity*currentSpeed;
+                gsap.to(title1, {
+                    xPercent: -50,
+                    x: `${baseOffset*4}px`,
+                    duration: 0.2,
+                    ease: "power1.out",
+                    overwrite: "auto",
+                });
+                gsap.to(title2, {
+                    xPercent: -50,
+                    x: `${baseOffset*2}px`,
+                    duration: 0.2,
+                    ease: "power1.out",
+                    overwrite: "auto",
+                });
+            }
+
+            gsap.set(title3,{
+                xPercent: -50,
+                x:0,
+            });
+        });
+        cards.forEach((card, index) => {
+    const staggerOffset = index * 0.075;
+    const scaledProgress = (self.progress - staggerOffset) * 3;
+    const individualProgress = Math.max(0, Math.min(1, scaledProgress));
+    const targetZ = index == cards.length - 1 ? 2500 : 3000; // Increased depth
+    const newZ = -50000 + (targetZ + 50000) * individualProgress;
+    const scaleProgress = Math.min(1, individualProgress * 12); // Increased scaling factor
+    const scale = Math.max(0.5, Math.min(1.5, scaleProgress)); // Adjusted scale range
+
+    gsap.set(card, {
+        z: newZ,
+        scale: scale
+    });
+});
+
+    },
+});
+});
+    </script>
+</body>
+</html>
+
+<!-- 
+scroll template 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISTE PCCoE</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "F37 Fudge";
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 4vw;
+    font-weight: 500;
+    color: #1f1f1f;
+}
+.hero,
+.outro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #edebde;
+}
+.sticky{
+background-color: #fffef8;
+}
+.titles{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 400vw;
+    height: 100vh;
+    display: flex;
+    will-change: transform;
+}
+.title{
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 9vw;
+    font-style: italic;
+    will-change: transform;
+}
+h1 .title-1{
+    color: #dafa6c;
+}
+h1 .title-2{
+color: #10d0f4;
+}
+h1.title-3{
+    color: #1f1f1f;
+}
+.images{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 250vw;
+    height: 250vh;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    z-index: -1;
+}
+.card{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 2em;
+    transform-style: preserve-3d;
+    will-change: transform;
+    overflow: hidden;
+}
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>(Scroll if you dare)</h1>
+    </section>
+    <section class="sticky">
+        <div class="titles">
+            <div class="title">
+                <h1 class="title-1">Showcase 1</h1>
+                <h1 class="title-2">Showcase 1</h1>
+                <h1 class="title-3">Showcase 1</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">Showcase 1</h1>
+                <h1 class="title-2">Showcase 1</h1>
+                <h1 class="title-3">Showcase 1</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">Showcase 1</h1>
+                <h1 class="title-2">Showcase 1</h1>
+                <h1 class="title-3">Showcase 1</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">Showcase 1</h1>
+                <h1 class="title-2">Showcase 1</h1>
+                <h1 class="title-3">Showcase 1</h1>
+            </div>
+        </div>
+        <div class="images"></div>
+    </section>
+    <section class="outro">
+        <h1>Thats a wrap</h1>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const lenis = new Lenis();
+
+   lenis.on("scroll", ScrollTrigger.update);
+
+   gsap.ticker.add(time => {
+       lenis.raf(time * 1000);
+   });
+
+   gsap.ticker.lagSmoothing(0);
+
+   const cardPositions = [
+   { top: "30%", left: "55%" },
+   { top: "20%", left: "25%" },
+   { top: "50%", left: "10%" },
+   { top: "40%", left: "40%" },
+   { top: "30%", left: "30%" },
+   { top: "40%", left: "45%" },
+   { top: "20%", left: "50%" },
+   { top: "60%", left: "10%" },
+   { top: "20%", left: "40%" },
+   { top: "20%", left: "55%" }
+];
+const titlesContainer = document.querySelector(".titles");
+const moveDistance = window.innerWidth*3;
+
+const imagesContainer = document.querySelector(".images");
+
+for (let i = 1; i <= 10; i++) {
+   const card = document.createElement("div");
+   card.className = `card card-${i}`;
+   
+   const img = document.createElement("img");
+   img.src = `./assets/img${i}.jpeg`;
+   img.alt = `Image ${i}`;
+   card.appendChild(img);
+
+   const position = cardPositions[i-1]
+   card.style.top = position.top;
+   card.style.left = position.left;
+   imagesContainer.appendChild(card);
+}
+
+const cards = document.querySelectorAll(".card");
+cards.forEach((card,index)=>{
+gsap.set(card, {
+    z: -50000,
+    scale: 0,
+});
+});
+
+ScrollTrigger.create({
+    trigger: ".sticky",
+    start: "top top",
+    end: `+=${window.innerHeight*5}px`,
+    pin:true,
+    scrub:1,
+    onUpdate: (self) =>{
+        const xPosition = -moveDistance*self.progress;
+        gsap.set(titlesContainer,{
+            x:xPosition,
+        });
+    },
+});
+});
+    </script>
+</body>
+</html>
+-->

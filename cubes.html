@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISTE PCCoE</title>
+    <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100vw;
+  height: 600vh;
+  font-family: "Notch Grotesk";
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sticky {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #cdb9ab;
+  color: #331707;
+}
+
+.logo {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 2vw; /* Responsive gap */
+  z-index: 2;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: wave2 2s infinite ease-in-out;
+}
+
+.col:nth-child(2) {
+  gap: 2vw; 
+}
+
+.block {
+  width: 5vw;
+  height: 5vw; 
+  background-color: #007bff;
+}
+
+.block-1 {
+  transform: rotate(42deg);
+  transform-origin: bottom right;
+}
+
+.block-5 {
+  transform: rotate(-42deg);
+  transform-origin: bottom left;
+}
+
+.cubes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  perspective: 10000px;
+}
+
+.cube {
+  position: absolute;
+  width: 15vw; 
+  height: 15vw; 
+  transform-style: preserve-3d;
+}
+
+.cube > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}
+
+.front {
+  transform: translateZ(7.5vw); 
+}
+
+.back {
+  transform: translateZ(-7.5vw) rotateY(180deg); 
+}
+
+.right {
+  transform: translateX(7.5vw) rotateY(90deg); 
+}
+
+.left {
+  transform: translateX(-7.5vw) rotateY(-90deg); 
+}
+
+.top {
+  transform: translateY(-7.5vw) rotateX(90deg); 
+}
+
+.bottom {
+  transform: translateY(7.5vw) rotateX(-90deg); 
+}
+
+.cube-1 {
+  top: -55%;
+  left: 37.5%;
+  transform: translate3d(-50%, -50%, -30000px) rotateX(360deg) rotateY(-360deg) rotateZ(-48deg);
+}
+
+.cube-2 {
+  top: -35%;
+  left: 32.5%;
+  transform: translate3d(-50%, -50%, -30000px) rotateX(-180deg) rotateY(180deg) rotateZ(90deg);
+}
+
+.cube-3 {
+  top: -65%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, -30000px) rotateX(-90deg) rotateY(-90deg) rotateZ(-180deg);
+}
+
+.cube-4 {
+  top: -35%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, -30000px) rotateX(-90deg) rotateY(-90deg) rotateZ(-180deg);
+}
+
+.cube-5 {
+  top: -55%;
+  left: 62.5%;
+  transform: translate3d(-50%, -50%, -30000px) rotateX(180deg) rotateY(180deg) rotateZ(-135deg);
+}
+
+.cube-6 {
+  top: -35%;
+  left: 67.5%;
+  transform: translate3d(-50%, -50%, -30000px) rotateX(-90deg) rotateY(-180deg) rotateZ(-180deg);
+}
+
+.header-1 {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 8vh;
+}
+
+.header-1 h1 {
+  font-weight: 400;
+  font-size: 6vw;
+  line-height: 1;
+  text-align: center;
+  display: inline-block;
+  animation: wave 2s infinite ease-in-out;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); } /* Adjust height if needed */
+}
+@keyframes wave2 {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(0); } /* Adjust height if needed */
+}
+
+.header-2 {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.75);
+  transform-origin: center center;
+  text-align: center;
+  color: #ffe9d9;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.header-2 h2 {
+  margin-bottom: 0.5rem;
+  font-size: 3vw; /* Responsive font size */
+}
+
+.header-2 p {
+  font-size: 1.5vw; /* Responsive font size */
+  font-weight: lighter;
+}
+
+/* Mid part */
+.sticky-mid {
+  background-color: #000000;
+}
+
+.titles {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 400vw;
+  height: 100vh;
+  display: flex;
+  will-change: transform;
+}
+
+.title {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 9vw; /* Responsive font size */
+  font-style: italic;
+  will-change: transform;
+}
+
+h1.title-1 {
+  font-style: italic;
+  color: #00ff37;
+  text-shadow: 6px 6px 0 rgba(255, 255, 255, 0.2);
+}
+
+h1.title-2 {
+  font-style: italic;
+  color: #00ff59;
+  text-shadow: 6px 6px 0 rgba(72, 208, 51, 0.2);
+}
+
+h1.title-3 {
+  font-style: italic;
+  color: #00ff40;
+  text-shadow: 2px 2px 0 rgba(64, 241, 79, 0.2);
+}
+
+.images {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250vw;
+  height: 250vh;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  z-index: -1;
+}
+
+.card {
+  position: absolute;
+  width: 20vw; /* Responsive width */
+  height: 20vw; /* Responsive height */
+  border-radius: 2em;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+}
+
+h6 {
+  margin: 20px;
+  color: blue;
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  .header-1 h1 {
+    font-size: 8vw; 
+  }
+
+  .header-2 h2 {
+    font-size: 4vw; 
+  }
+
+  .header-2 p {
+    font-size: 2vw; 
+  }
+
+  .cube {
+    width: 20vw; 
+    height: 20vw;
+  }
+
+  .front, .back, .right, .left, .top, .bottom {
+    transform: translateZ(10vw); 
+  }
+}
+
+@media (max-width: 480px) {
+  .header-1 h1 {
+    font-size: 10vw; 
+  }
+
+  .header-2 h2 {
+    font-size: 5vw; 
+  }
+
+  .header-2 p {
+    font-size: 3vw; 
+  }
+
+  .cube {
+    width: 25vw; 
+    height: 25vw;
+  }
+
+  .front, .back, .right, .left, .top, .bottom {
+    transform: translateZ(12.5vw);
+  }
+}
+
+/*bottom section css*/
+.bottomsection {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+.bottomsection .header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottomsection .header h1 {
+    font-family: "Circular Std", sans-serif;
+    font-size: 12vw;
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    line-height: 175%;
+    color: #00ff1e;
+    text-align: center;
+    /* transform: translate(10%, 10%); */
+}
+
+.bottomsection .item {
+    position: absolute;
+    padding: 0.5em 0.5em 2em 0.5em;
+    width: 20vh;
+    height: 20vh;
+    overflow: hidden;
+    background: #fff;
+}
+
+.bottomsection .item img {
+    width: 18vh;
+    height: 18vh;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+    </style>
+</head>
+<body>
+
+    <section class="sticky">
+        <div class="logo">
+            <div class="col">
+                <div class="block block-1"></div>
+                <div class="block block-2"></div>
+            </div>
+            <div class="col">
+                <div class="block block-3"></div>
+                <div class="block block-4"></div>
+            </div>
+            <div class="col">
+                <div class="block block-5"></div>
+                <div class="block block-6"></div>
+            </div>
+        </div>
+        <div class="cubes">
+            <div class="cube cube-1">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="cube cube-2">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="cube cube-3">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="cube cube-4">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="cube cube-5">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="cube cube-6">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+
+        <div class="header-1">
+            <h1>Crafting Ideas, <br>Engineering Solutions</h1>
+            <h6>Scroll down</h6>
+        </div>
+        <div class="header-2">
+            <h2>Where innovation meets creativity</h2>
+            <p>ISTE unites visionary thinkers, creative engineers, and technical experts, collaborating seamlessly with departments to transform
+                challenges into opportunities. Together, we deliver tailored solutions that drive impact and inspired growth.
+            </p>
+        </div>
+    </section>
+
+    <section class="sticky-mid">
+        <div class="titles">
+            <div class="title">
+                <h1 class="title-1">Welcome</h1>
+                <h1 class="title-2">Welcome</h1>
+                <h1 class="title-3">Welcome</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">To</h1>
+                <h1 class="title-2">To</h1>
+                <h1 class="title-3">To</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">ISTE</h1>
+                <h1 class="title-2">ISTE</h1>
+                <h1 class="title-3">ISTE</h1>
+            </div>
+            <div class="title">
+                <h1 class="title-1">PCCoE</h1>
+                <h1 class="title-2">PCCoE</h1>
+                <h1 class="title-3">PCCoE</h1>
+            </div>
+        </div>
+        <div class="images"></div>
+    </section>
+
+    <section class="bottomsection">
+        <div class="header">
+            <h1>ISTE</h1>
+        </div>
+        <div id="bottom-container"></div> <!-- Add this container for the bottom section -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script>
+            const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const Body = Matter.Body;
+
+let engine;
+let items = [];
+let lastMouseX = -1;
+let lastMouseY = -1;
+
+function setup() {
+    const bottomContainer = document.getElementById('bottom-container');
+    createCanvas(window.innerWidth, window.innerHeight).parent(bottomContainer);
+    engine = Engine.create();
+    engine.world.gravity.y = 0;
+    addBoundaries();
+
+    let numItems = isMobile() ? 3 : 12; // Reduce items for mobile
+    for (let i = 0; i < numItems; i++) {
+        let x = random(100, width - 100);
+        let y = random(100, height - 100);
+        items.push(new Item(x, y, `./cube_images/img${i + 1}.jpg`, bottomContainer));
+    }
+}
+
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function addBoundaries() {
+    const thickness = 50;
+    World.add(engine.world, [
+        Bodies.rectangle(width / 2, -thickness / 2, width, thickness, { isStatic: true }),
+        Bodies.rectangle(width / 2, height + thickness / 2, width, thickness, { isStatic: true }),
+        Bodies.rectangle(-thickness / 2, height / 2, thickness, height, { isStatic: true }),
+        Bodies.rectangle(width + thickness / 2, height / 2, thickness, height, { isStatic: true })
+    ]);
+}
+
+function draw() {
+    background("black");
+    Engine.update(engine);
+    items.forEach((item) => item.update());
+}
+
+class Item {
+    constructor(x, y, imagePath, container) {
+        let options = {
+            frictionAir: 0.075,
+            restitution: 0.25,
+            density: 0.002,
+            angle: Math.random() * Math.PI * 2
+        };
+        this.body = Bodies.rectangle(x, y, 100, 200, options);
+        World.add(engine.world, this.body);
+
+        this.div = document.createElement("div");
+        this.div.className = "item";
+        this.div.style.left = `${this.body.position.x - 50}px`;
+        this.div.style.top = `${this.body.position.y - 100}px`;
+
+        const img = document.createElement("img");
+        img.src = imagePath;
+        this.div.appendChild(img);
+        container.appendChild(this.div); // Append to the bottom container
+    }
+
+    update() {
+        this.div.style.left = `${this.body.position.x - 50}px`;
+        this.div.style.top = `${this.body.position.y - 100}px`;
+        this.div.style.transform = `rotate(${this.body.angle}rad)`;
+    }
+}
+
+function mouseMoved() {
+    if (dist(mouseX, mouseY, lastMouseX, lastMouseY) > 10) {
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+
+        items.forEach((item) => {
+            if (dist(mouseX, mouseY, item.body.position.x, item.body.position.y) < 150) {
+                let forceMagnitude = 3;
+                Body.applyForce(
+                    item.body,
+                    { x: item.body.position.x, y: item.body.position.y },
+                    { x: random(-forceMagnitude, forceMagnitude), y: random(-forceMagnitude, forceMagnitude) }
+                );
+            }
+        });
+    }
+}
+
+function windowResized() {
+    resizeCanvas(window.innerWidth, window.innerHeight);
+    addBoundaries();
+}
+
+function touchMoved(event) {
+    event.preventDefault(); // Prevent scrolling on touch devices
+    let touchX = event.touches[0].clientX;
+    let touchY = event.touches[0].clientY;
+
+    if (dist(touchX, touchY, lastMouseX, lastMouseY) > 10) {
+        lastMouseX = touchX;
+        lastMouseY = touchY;
+
+        items.forEach((item) => {
+            if (dist(touchX, touchY, item.body.position.x, item.body.position.y) < 150) {
+                let forceMagnitude = 3;
+                Body.applyForce(
+                    item.body,
+                    { x: item.body.position.x, y: item.body.position.y },
+                    { x: random(-forceMagnitude, forceMagnitude), y: random(-forceMagnitude, forceMagnitude) }
+                );
+            }
+        });
+    }
+}
+
+// Add touch event listener
+document.addEventListener('touchmove', touchMoved);
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.19/dist/lenis.min.js"></script>
+    <script type="module">
+        import { cubesData } from "./cubesData.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis();
+            lenis.on("scroll", ScrollTrigger.update);
+
+            gsap.ticker.add((time) => { 
+                lenis.raf(time * 1000);
+            });
+
+            gsap.ticker.lagSmoothing(0);
+
+            const stickySection = document.querySelector(".sticky");
+            const logo = document.querySelector(".logo");
+            const cubesContainer = document.querySelector(".cubes");
+            const header1 = document.querySelector(".header-1");
+            const header2 = document.querySelector(".header-2");
+
+            const stickyHeight = window.innerHeight * 4;
+
+            const cubesFaces = document.querySelectorAll(".cube > div");
+            let imageCounter = 1;
+
+            cubesFaces.forEach((face) => {
+                const img = document.createElement("img");
+                img.src = `./cube_images/img${imageCounter}.jpg`;
+                img.alt = `Cube Image ${imageCounter}`;
+                face.appendChild(img);
+                imageCounter++;
+            });
+
+            const interpolate = (start, end, progress) => {
+                return start + (end - start) * progress;
+            }
+
+            ScrollTrigger.create({
+                trigger: stickySection,
+                start: "top top",
+                end: `+=${stickyHeight}px`,
+                scrub: 1,
+                pin: true,
+                pinSpacing: true,
+                onUpdate: (self) => {
+                    const initialProgress = Math.min(self.progress * 20, 1);
+                    logo.style.filter = `blur(${interpolate(0, 20, initialProgress)}px)`;
+                    const logoOpacityProgress = self.progress >= 0.02 ? Math.min((self.progress - 0.02) * 100, 1) : 0;
+                    logo.style.opacity = 1 - logoOpacityProgress;
+
+                    const cubesOpacityProgress = self.progress > 0.01 ? Math.min((self.progress - 0.01) * 100, 1) : 0;
+                    cubesContainer.style.opacity=cubesOpacityProgress;
+
+                    const header1Progress = Math.min(self.progress * 2.5, 1);
+
+                    header1.style.transform = `translate(-50%, -50%) scale(${interpolate(1, 1.5, header1Progress)})`;
+                    header1.style.filter = `blur(${interpolate(0, 20, header1Progress)}px)`;
+                    header1.style.opacity = 1 - header1Progress;
+
+                    const header2StartProgress = (self.progress - 0.4) * 10;
+                    const header2Progress = Math.max(0, Math.min(header2StartProgress, 1));
+                    const header2Scale = interpolate(0.75, 1, header2Progress);
+                    const header2Blur = interpolate(10, 0, header2Progress);
+
+                    header2.style.transform = `translate(-50%, -50%) scale(${header2Scale})`;
+                    header2.style.filter = `blur(${header2Blur}px)`;
+                    header2.style.opacity = header2Progress;
+
+                    const firstPhaseProgress = Math.min(self.progress * 2, 1);
+                    const secondPhaseProgress = self.progress >= 0.5 ? (self.progress - 0.5) * 2 : 0;
+
+                    Object.entries(cubesData).forEach(([cubeClass, data]) => {
+                        const cube = document.querySelector(`.${cubeClass}`);
+                        const { initial, final } = data;
+
+                        const currentTop = interpolate(initial.top, final.top, firstPhaseProgress);
+                        const currentLeft = interpolate(initial.left, final.left, firstPhaseProgress);
+                        const currentRotateX = interpolate(initial.rotateX, final.rotateX, firstPhaseProgress);
+                        const currentRotateY = interpolate(initial.rotateY, final.rotateY, firstPhaseProgress);
+                        const currentRotateZ = interpolate(initial.rotateZ, final.rotateZ, firstPhaseProgress);
+                        const currentZ = interpolate(initial.z, final.z, firstPhaseProgress);
+
+                        let additionalRotation = 0;
+
+                        if (cubeClass === "cube-2") {
+                            additionalRotation = interpolate(0, 180, secondPhaseProgress);
+                        } else if (cubeClass === "cube-4") {
+                            additionalRotation = interpolate(0, -180, secondPhaseProgress);
+                        }
+
+                        cube.style.top = `${currentTop}%`;
+                        cube.style.left = `${currentLeft}%`;
+                        cube.style.transform = `
+                            translate3d(-50%, -50%, ${currentZ}px)
+                            rotateX(${currentRotateX}deg)
+                            rotateY(${currentRotateY + additionalRotation}deg)
+                            rotateZ(${currentRotateZ}deg)
+                        `;
+                    });
+                },
+            });
+        });
+        
+
+        /*js for mid part*/
+        document.addEventListener("DOMContentLoaded", () => {
+   const lenis = new Lenis();
+
+   lenis.on("scroll", ScrollTrigger.update);
+
+   gsap.ticker.add(time => {
+       lenis.raf(time * 1000);
+   });
+
+   gsap.ticker.lagSmoothing(0);
+
+   const cardPositions = [
+   { top: "30%", left: "55%" },
+   { top: "20%", left: "25%" },
+   { top: "50%", left: "10%" },
+   { top: "40%", left: "40%" },
+   { top: "30%", left: "30%" },
+   { top: "40%", left: "45%" },
+   { top: "20%", left: "50%" },
+   { top: "60%", left: "10%" },
+   { top: "20%", left: "40%" },
+   { top: "20%", left: "55%" }
+];
+const titlesContainer = document.querySelector(".titles");
+const moveDistance = window.innerWidth*3;
+
+const imagesContainer = document.querySelector(".images");
+
+for (let i = 1; i <= 10; i++) {
+   const card = document.createElement("div");
+   card.className = `card card-${i}`;
+   
+   const img = document.createElement("img");
+   img.src = `./posters/img${i}.jpeg`;
+   img.alt = `Image ${i}`;
+   card.appendChild(img);
+
+   const position = cardPositions[i-1]
+   card.style.top = position.top;
+   card.style.left = position.left;
+   imagesContainer.appendChild(card);
+}
+
+const cards = document.querySelectorAll(".card");
+cards.forEach((card,index)=>{
+gsap.set(card, {
+    z: -50000,
+    scale: 0,
+});
+});
+
+ScrollTrigger.create({
+    trigger: ".sticky-mid",
+    start: "top top",
+    end: `+=${window.innerHeight*5}px`,
+    pin:true,
+    scrub:1,
+    onUpdate: (self) =>{
+        const xPosition = -moveDistance*self.progress;
+        gsap.set(titlesContainer,{
+            x:xPosition,
+        });
+        const velocity = self.velocity;
+        const normalizedVelocity = velocity/Math.abs(velocity) || 0;
+        const maxOffset = 30;
+        const currentSpeed = Math.min(Math.abs(velocity/500), maxOffset);
+        const isAtEdge = self.progress <= 0 || self.progress >=1;
+
+        document.querySelectorAll(".title").forEach((titlesContainer, index) => {
+            const title1 = titlesContainer.querySelector(".title-1");
+            const title2 = titlesContainer.querySelector(".title-2");
+            const title3 = titlesContainer.querySelector(".title-3");
+
+            if(isAtEdge){
+                gsap.to([title1,title2], {
+                    xPercent: -50,
+                    x: 0,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    overwrite: true,
+                });
+            }else{
+                const baseOffset = normalizedVelocity*currentSpeed;
+                gsap.to(title1, {
+                    xPercent: -50,
+                    x: `${baseOffset*4}px`,
+                    duration: 0.2,
+                    ease: "power1.out",
+                    overwrite: "auto",
+                });
+                gsap.to(title2, {
+                    xPercent: -50,
+                    x: `${baseOffset*2}px`,
+                    duration: 0.2,
+                    ease: "power1.out",
+                    overwrite: "auto",
+                });
+            }
+
+            gsap.set(title3,{
+                xPercent: -50,
+                x:0,
+            });
+        });
+        cards.forEach((card, index) => {
+    const staggerOffset = index * 0.075;
+    const scaledProgress = (self.progress - staggerOffset) * 3;
+    const individualProgress = Math.max(0, Math.min(1, scaledProgress));
+    const targetZ = index == cards.length - 1 ? 2500 : 3000; // Increased depth
+    const newZ = -50000 + (targetZ + 50000) * individualProgress;
+    const scaleProgress = Math.min(1, individualProgress * 12); // Increased scaling factor
+    const scale = Math.max(0.5, Math.min(1.5, scaleProgress)); // Adjusted scale range
+
+    gsap.set(card, {
+        z: newZ,
+        scale: scale
+    });
+});
+
+    },
+});
+});
+    </script>
+</body>
+</html>

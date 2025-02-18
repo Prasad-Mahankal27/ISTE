@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTE PCCoE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background: #222;
+    }
+
+    .container {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+    }
+
+    .container .icon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        left: -50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .container .icon .imgBx.active {
+        box-shadow: 0 0 0 6px#222,
+            0 0 0 12px#ff1d50;
+    }
+
+    .container .icon .imgBx {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        border-radius: 50%;
+        transition: 0.5s;
+        border: 1px solid #fff;
+        box-shadow: 0 0 0 4px #222,
+            0 0 0 6px #fff;
+        transform: rotate(calc(360deg/9 * var(--i)));
+        transform-origin: 288px;
+        z-index: 100;
+        overflow: hidden;
+    }
+
+    .container .icon .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        transform: rotate(calc(-360deg/9 * var(--i)));
+        transition: 0.5s;
+        filter: grayscale(1);
+    }
+
+    .container .icon .imgBx.active img {
+        filter: grayscale(0);
+    }
+
+    .content {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content:before {
+        content: '';
+        position: absolute;
+        inset: 60px;
+        border: 4px solid transparent;
+        border-left: 4px solid #2196f3;
+        border-right: 4px solid #fff;
+        border-radius: 50%;
+        animation: animte_01 5s linear infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @keyframes animte_01 {
+        0% {
+            rotate: 0deg;
+        }
+
+        100% {
+            rotate: 360deg;
+        }
+    }
+
+    .content:after {
+        content: '';
+        position: absolute;
+        inset: 120px;
+        border: 4px solid transparent;
+        border-left: 4px solid #ff1d50;
+        border-right: 4px solid #fff;
+        border-radius: 50%;
+        animation: animte_02 2.5s linear infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @keyframes animte_02 {
+        0% {
+            rotate: 360deg;
+        }
+
+        100% {
+            rotate: 0deg;
+        }
+    }
+
+    @media (max-width: 768px) {
+    .content:before{
+        border: none;
+    }
+    .content:after {
+        inset: 45px;
+    }
+    .contentBx .card .imgBx {
+            width: 50px;
+            height: 50px;
+        }
+
+        .contentBx .card .textBx h2 {
+            font-size: 1em;
+        }
+
+        .contentBx .card .textBx h2 span {
+            font-size: 0.5em;
+        }
+
+        .contentBx .card .textBx .sci li a {
+            width: 20px;
+            height: 20px;
+        }
+}
+
+    .contentBx {
+        position: absolute;
+        transform: scale(0);
+        transition: 0.5s;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contentBx.active {
+        transform: scale(1);
+        opacity: 1;
+        transition-delay: 0.5s;
+    }
+
+    .contentBx .card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .contentBx .card .imgBx {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .contentBx .card .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .contentBx .card .textBx {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .contentBx .card .textBx h2 {
+        position: relative;
+        font-size: 1.25em;
+        font-weight: 600;
+        columns: white;
+        color: white;
+        margin-top: 8px;
+        line-height: 1em;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .contentBx .card .textBx h2 span {
+        font-size: 0.65em;
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+    }
+
+    .contentBx .card .textBx .sci {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 10px;
+    }
+
+    .contentBx .card .textBx .sci li {
+        list-style: none;
+    }
+
+    .contentBx .card .textBx .sci li a {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #444;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.5s;
+    }
+
+    .contentBx .card .textBx .sci li a:hover {
+        background: #2196f3;
+    }
+
+    /*text section*/
+    .team-container {
+        background-color: black;
+        /* Black background */
+        color: white;
+        /* White text */
+        padding: 50px 20px;
+        text-align: center;
+        margin: 10%;
+        width: 30%;
+        position: relative;
+    }
+
+    .text-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .text-section p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow-wrap: break-word;
+        /* Correct text wrapping */
+        word-wrap: break-word;
+        /* Ensure long words wrap */
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        .container {
+            width: 400px;
+            height: 400px;
+        }
+
+        .container .icon .imgBx {
+            width: 100px;
+            height: 100px;
+            transform-origin: 250px;
+        }
+
+        .contentBx .card .imgBx {
+            width: 80px;
+            height: 80px;
+        }
+
+        .contentBx .card .textBx h2 {
+            font-size: 1em;
+        }
+
+        .contentBx .card .textBx h2 span {
+            font-size: 0.5em;
+        }
+
+        .contentBx .card .textBx .sci li a {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            width: 270px;
+            height: 270px;
+        }
+
+        .container .icon .imgBx {
+            width: 60px;
+            height: 60px;
+            transform-origin: 165px;
+        }
+
+        .contentBx .card .imgBx {
+            width: 60px;
+            height: 60px;
+        }
+
+        .contentBx .card .textBx h2 {
+            font-size: 0.8em;
+        }
+
+        .contentBx .card .textBx h2 span {
+            font-size: 0.4em;
+        }
+
+        .contentBx .card .textBx .sci li a {
+            width: 20px;
+            height: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+    <section class="cycle-section">
+<div class="container">
+    <div class="icon">
+        <div class="imgBx active" style="--i: 1;" data-id="content1">
+            <img src="images_core/c1.jpg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 2;" data-id="content2">
+            <img src="images_core/c2.jpeg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 3;" data-id="content3">
+            <img src="images_core/c3.heic" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 4;" data-id="content4">
+            <img src="images_core/c4.jpg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 5;" data-id="content5">
+            <img src="images_core/c5.jpg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 6;" data-id="content6">
+            <img src="images_core/c6.jpg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 7;" data-id="content7">
+            <img src="images_core/c7.jpg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 8;" data-id="content8">
+            <img src="images_core/c8.jpg" alt="Team Member">
+        </div>
+        <div class="imgBx" style="--i: 9;" data-id="content9">
+            <img src="images_core/c9.jpg" alt="Team Member">
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="contentBx active" id="content1">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c1.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Pranav Patil<br><span>President ISTE</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content2">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c2.jpeg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Siddhesh Patil<br><span>Vice President</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content3">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c3.heic" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Sayee Patil<br><span>Secretary</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content4">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c4.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Amar Pawar<br><span>Treasurer</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content5">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c5.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Yash Mulay<br><span>Sponsorship Head</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content6">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c6.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Atharva Bhange<br><span>Management Head</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content7">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c7.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Sumedh Pimplikar<br><span>Head co-ordinator</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content8">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c8.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Arpit Ukey<br><span>Joint Secretary</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentBx" id="content9">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="images_core/c9.jpg" alt="Team Member">
+                </div>
+                <div class="textBx">
+                    <h2>Saloni Meshram<br><span>Joint Secretary</span></h2>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat the above block for content4 to content8 -->
+    </div>
+</div>
+</section>
+
+<script>
+    let imgBx = document.querySelectorAll('.imgBx');
+    let contentBx = document.querySelectorAll('.contentBx');
+
+    imgBx.forEach((img, index) => {
+        img.addEventListener('mouseover', function() {
+            contentBx.forEach(content => content.classList.remove('active'));
+            imgBx.forEach(image => image.classList.remove('active'));
+
+            document.getElementById(this.dataset.id).classList.add('active');
+            this.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

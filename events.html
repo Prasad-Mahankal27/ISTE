@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTE PCCoE</title>
+    <link rel="stylesheet" href="events.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-12" >
+              
+              <div class="block_top" style="margin: 25px;">
+                  <h1>ISTE PCCoE Events</h1>
+              </div>
+            
+          </div>
+        </div>
+           <div class="row">
+            <div class="col-12" >
+                <div class="cards">
+                    <!-- <ul class="nav">
+                        <li><a href="#card1"><div class="circle active 1">1</div></a></li>
+                          <li><a href="#card2"><div class="circle 2">2</div></a></li>
+                          <li><a href="#card3"><div class="circle 3">3</div></a></li>
+                          <li><a href="#card4"><div class="circle 3">4</div></a></li>
+                      </ul> -->
+                      <div class="custom-card card1" id="1" style="z-index: 2;" onclick="location.href='eventpages/uiwars.html'">
+                        <h1>UI WARS</h1>
+                        <p>
+                            A two-round competition where participants showcase their HTML, CSS, & frontend design skills 
+                            to create innovative websites for college clubs, with a challenging prototype in the final round.
+                        </p>
+                        <button class="explore-btn">Explore</button>
+
+                    </div>                    
+                  <div class="custom-card card2" id="2" style=" z-index: 3;" onclick="location.href='eventpages/yoga.html'">
+                    <h1>FACE YOGA</h1>
+                        <p>
+                            Join us for a rejuvenating face yoga session that combines gentle exercises to tone and relax your facial muscles, promoting a youthful and radiant glow. Unwind and enhance your natural beauty with easy-to-follow techniques!
+                        </p>
+                        <button class="explore-btn">Explore</button>
+                  </div>
+                  <div class="custom-card card3" id="3" style="z-index: 4;" onclick="location.href='eventpages/beast.html'">
+                    <h1>BEAST GAMES</h1>
+                        <p>
+                            Get ready for an adrenaline-pumping experience with Beast Games, where participants compete in a variety of thrilling physical and mental challenges. Push your limits, have fun, and unleash your inner beast!
+                        </p>
+                        <button class="explore-btn">Explore</button>
+                  </div>
+                  <div class="custom-card card4" id="4" style="z-index: 5;" onclick="location.href='eventpages/coding.html'">
+                    <h1>CODING OLYMPICS</h1>
+                        <p>
+                            Join the Coding Olympics, a thrilling competition where coders from all levels come together to solve complex challenges in record time. Showcase your skills, race against the clock, and aim for victory!
+                        </p>
+                        <button class="explore-btn">Explore</button>
+                  </div>
+                  <div class="custom-card card5" id="5" style="z-index: 6;" onclick="location.href='eventpages/tark.html'">
+                    <h1>Tark Vitark</h1>
+                    <p>
+                      The ISTE-organized debate competition featured intense discussions on contemporary issues, where participants showcased their critical thinking and persuasive skills. Engaging arguments and rebuttals made for a dynamic and thought-provoking event.
+                    </p>
+                    <button class="explore-btn">Explore</button>
+                </div>
+                <div class="custom-card card5" id="5" style="z-index: 6;" onclick="location.href='eventpages/bgmi.html'">
+                  <h1>BGMI Tournament</h1>
+                  <p>
+                    The BGMI Tournament is an intense battle royale competition where squads compete for victory in high-stakes matches, showcasing their strategy, teamwork, and combat skills. 
+                  </p>
+                  <button class="explore-btn">Explore</button>
+              </div>
+                <div class="custom-card card6" id="6" style="z-index: 7;" onclick="location.href='eventpages/logic.html'">
+                  <h1>Logic Building Workshop</h1>
+                  <p>
+                    Join our Logic Building Workshop to enhance problem-solving skills through real-life scenarios, puzzles, and structured thinking—without any coding!
+                  </p>
+                  <button class="explore-btn">Explore</button>
+              </div>
+                </div>
+               </div>
+          </div>
+        
+        <div class="row">
+            <div class="col-12" >
+          <div class="next_block"><h1>Thank You!</h1></div>
+            </div>
+        </div>
+      </div>
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+let tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".cards",
+    pin: true,
+    pinSpacing: true,
+    markers: true,
+    start: "top-=120px top", // When the top of the trigger hits the top of the viewport
+    end: "+=2500", // Extended for Card 4
+    scrub: 1, // Smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+  }
+});
+
+// Card 1 Animation
+tl.addLabel("card1");
+tl.to('.card1', {
+  yPercent: 0,
+  opacity: 1
+}); 
+
+// Card 2 Animation
+tl.from('.card2', {
+  yPercent: 75,
+  opacity: 0,
+}); 
+tl.addLabel("card2");
+tl.add(() => setActiveNav(tl.scrollTrigger.direction > 0 ? 1 : 0), "-=0.15");
+tl.to('.card1', {
+  scale: 0.95,
+  yPercent: -0.5,
+  opacity: 0.7
+}, "-=0.3"); 
+tl.to('.card2', {
+  yPercent: 0,
+  opacity: 1
+});
+
+// Card 3 Animation
+tl.from('.card3', {
+  yPercent: 75,
+  opacity: 0,
+}); 
+tl.addLabel("card3");
+tl.add(() => setActiveNav(tl.scrollTrigger.direction > 0 ? 2 : 1), "-=0.15");
+tl.to('.card2', {
+  scale: 0.98,
+  yPercent: -0.4,
+  opacity: 0.7
+}, "-=0.3"); 
+tl.to('.card3', {
+  yPercent: 0,
+  opacity: 1
+}); 
+
+// Card 4 Animation (NEW)
+tl.from('.card4', {
+  yPercent: 75,
+  opacity: 0,
+}); 
+tl.addLabel("card4");
+tl.add(() => setActiveNav(tl.scrollTrigger.direction > 0 ? 3 : 2), "-=0.15");
+tl.to('.card3', {
+  scale: 0.98,
+  yPercent: -0.4,
+  opacity: 0.7
+}, "-=0.3"); 
+tl.to('.card4', {
+  yPercent: 0,
+  opacity: 1
+}); 
+
+// Card 5 Animation (NEW)
+tl.from('.card5', {
+  yPercent: 75,
+  opacity: 0,
+}); 
+tl.addLabel("card5");
+tl.add(() => setActiveNav(tl.scrollTrigger.direction > 0 ? 2 : 1), "-=0.15");
+tl.to('.card4', {
+  scale: 0.95,
+  yPercent: -0.5,
+  opacity: 0.7
+}, "-=0.3"); 
+tl.to('.card5', {
+  yPercent: 0,
+  opacity: 1
+}); 
+
+tl.from('.card6', {
+  yPercent: 75,
+  opacity: 0,
+}); 
+tl.addLabel("card6");
+tl.add(() => setActiveNav(tl.scrollTrigger.direction > 0 ? 3 : 2), "-=0.15");
+tl.to('.card5', {
+  scale: 0.98,
+  yPercent: -0.4,
+  opacity: 0.7
+}, "-=0.3"); 
+tl.to('.card6', {
+  yPercent: 0,
+  opacity: 1
+}); 
+
+// Scroll Navigation for Clicks
+gsap.utils.toArray(".nav a").forEach((a, i) => {
+  a.addEventListener("click", e => {
+    e.preventDefault();
+    let pad = i === 0 ? 0 : tl.scrollTrigger.direction > 0 ? 2 : -2;
+    gsap.to(window, { scrollTo: labelToScroll(tl, "card" + (i + 1)) + pad });
+  });
+});
+
+// Function to Convert Label to Scroll Position
+function labelToScroll(timeline, label) {
+  let st = timeline.scrollTrigger,
+      progress = timeline.labels[label] / timeline.duration();
+  return st.start + (st.end - st.start) * progress;
+}
+
+// Function to Set Active Navigation
+let circles = gsap.utils.toArray(".nav .circle");
+
+function setActiveNav(index) {
+  circles.forEach((circle, i) => {
+    circle.classList[i === index ? "add" : "remove"]("active");
+  });
+}
+
+
+    </script>
+
+</body>
+</html>

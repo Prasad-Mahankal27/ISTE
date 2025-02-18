@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="eventstyles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ISTE PCCOE Presents</h1>
+    <h2>Face Yoga</h2>
+    <div class="date-time">25 Oct</div>
+    <div class="date-time">2:00 PM - 5:00 PM</div>
+    <div class="button-container">
+      <a href="#" class="button primary">Register</a>
+      <a href="#" class="button secondary">Rules and Regulations</a>
+    </div>
+
+    <section>
+    <img src="../images_extra/yoga.jpeg" alt="" style="height: 80vh; width: auto; margin: 10vh;">
+</section>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <img src="../images_extra/speaker.png" alt="" style="object-fit: fill; height: 100%; width: 100%; border-radius: 100%;">
+        </div>
+        <div class="feature-title">Learn Yoga</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <img src="../images_extra/free.png" alt="Free participation icon" style="object-fit: fill; height: 100%; width: 100%; border-radius: 100%;">
+        </div>
+        <div class="feature-title">Free Participation</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <img src="../images_extra/goodies.png" alt="Goodies icon" style="object-fit: fill; height: 100%; width: 100%; border-radius: 100%;">
+        </div>
+        <div class="feature-title">Win exciting goodies</div>
+      </div>
+    </div>
+
+    <div class="faqs">
+      <h2 class="faq-title">FAQs</h2>
+      <div class="faq-item">
+        <div class="faq-question">What is Face Yoga?</div>
+        <div class="faq-answer">Face Yoga is a natural way to tone and relax facial muscles, improving skin elasticity and promoting a youthful appearance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">When and where will the Face Yoga session take place?</div>
+        <div class="faq-answer">The Face Yoga session will take place on October 25th from 2:00 PM to 5:00 PM at ISTE PCCOE.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How can I register for the Face Yoga session?</div>
+        <div class="faq-answer">You can register by clicking the Register button above or visiting our official event page.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I bring to the session?</div>
+        <div class="faq-answer">We recommend bringing a small mirror, a towel, and a bottle of water for hydration.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is Face Yoga suitable for everyone?</div>
+        <div class="faq-answer">Yes, Face Yoga is suitable for all age groups and does not require any prior experience.</div>
+      </div>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
